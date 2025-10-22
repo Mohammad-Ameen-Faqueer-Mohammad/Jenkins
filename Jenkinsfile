@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'dev-server' }
+    agent { label 'dev' }
 
     stages {
         stage('code') {
@@ -17,7 +17,7 @@ pipeline {
         stage('docker push') {
             steps {
                 withCredentials([usernamePassword(
-                    credentialsId: 'dockerHubCred',
+                    credentialsId: 'dockerlogin',
                     usernameVariable: 'USERNAME',
                     passwordVariable: 'PASSWORD'
                 )]) {
